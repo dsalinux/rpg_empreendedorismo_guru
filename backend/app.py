@@ -308,5 +308,9 @@ def handle_pedir_estado(data):
 
 
 if __name__ == '__main__':
-    print("Servidor Socket.IO a arrancar em http://127.0.0.1:5000")
-    socketio.run(app, debug=True, port=5000, allow_unsafe_werkzeug=True)
+    porta = int(os.environ.get("PORT", 5000))
+    
+    print(f"Servidor Socket.IO a arrancar na porta {porta}")
+    
+    # Alterado: host='0.0.0.0' e port=porta
+    socketio.run(app, host='0.0.0.0', port=porta, debug=True, allow_unsafe_werkzeug=True)
